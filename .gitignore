@@ -1,6 +1,6 @@
 *.properties
 *.xml
-/build/*
-/nbcproject
-/test
+/build/classes/corp/karby/*
+/nbproject/*
+/test/*
 manifest.mf
