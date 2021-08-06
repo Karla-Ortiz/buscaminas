@@ -1,6 +1,6 @@
 *.properties
 *.xml
-/build
+/build/*
 /nbcproject
 /test
 manifest.mf
