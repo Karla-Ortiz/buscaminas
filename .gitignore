@@ -1,6 +1,9 @@
 *.properties
-*.xml
-build/classes/
-nbproject/
-test/
+/nbproject/*
+nbproject/*
+nbproject/*.properties
+nbproject/*.xml
+build.xml
 manifest.mf
+/build/
+/dist/
