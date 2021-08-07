@@ -5,6 +5,9 @@
  */
 package corp.karby.buscaminas.gui;
 
+import corp.karby.buscaminas.controllers.Reproductor;
+import javafx.application.Platform;
+
 /**
  *
  * @author KORTIZ
@@ -16,6 +19,23 @@ public class bienvenida extends javax.swing.JFrame {
      */
     public bienvenida() {
         initComponents();
+    }
+
+    private static void reproducir() {
+        while (true) {
+            Thread t = new Thread(() -> {
+                try {
+                    Reproductor mi_reproductor = new Reproductor();
+                    mi_reproductor.AbrirFichero("src/corp/karby/buscaminas/music/welcome.mp3");
+                    mi_reproductor.Play();
+                    Thread.sleep(150000);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    System.out.println("Error: " + ex.getMessage());
+                }
+            });
+            t.run();
+        }
     }
 
     /**
@@ -124,11 +144,15 @@ public class bienvenida extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new bienvenida().setVisible(true);
-            }
+        Thread t = new Thread(() -> {
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new bienvenida().setVisible(true);
+                }
+            });
         });
+        t.start();
+        reproducir();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
