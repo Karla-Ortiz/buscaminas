@@ -5,14 +5,24 @@
  */
 package corp.karby.buscaminas.gui;
 
+import corp.karby.buscaminas.controllers.Instancias;
 import corp.karby.buscaminas.controllers.Reproductor;
+import corp.karby.buscaminas.controllers.logicaJuego;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
 import javafx.application.Platform;
+import javax.swing.JProgressBar;
+import javax.swing.Timer;
 
 /**
  *
  * @author KORTIZ
  */
 public class bienvenida extends javax.swing.JFrame {
+
+    int n = 0;
+    Timer t = null;
 
     /**
      * Creates new form bienvenida
@@ -38,6 +48,11 @@ public class bienvenida extends javax.swing.JFrame {
         }
     }
 
+    private static int generateIntRandom(int max) {
+        Random r = new Random();
+        return r.nextInt(max);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,8 +63,6 @@ public class bienvenida extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        barraProgress = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         progress = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -58,11 +71,9 @@ public class bienvenida extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Mongolian Baiti", 1, 18)); // NOI18N
         jLabel1.setText("BIENVENIDO");
 
-        jLabel2.setText("Cargando...");
-
         progress.setText(" ");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Iniciar juego");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -74,36 +85,28 @@ public class bienvenida extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(barraProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(145, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(171, 171, 171))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(196, 196, 196))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(progress, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(208, 208, 208))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(127, 127, 127))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(162, 162, 162))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(barraProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(62, 62, 62)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
                 .addComponent(progress)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1))
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -111,9 +114,8 @@ public class bienvenida extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JuegoExperto jf = new JuegoExperto();
         this.setVisible(false);
-        jf.setVisible(true);
+        Instancias.getInicio().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -156,10 +158,8 @@ public class bienvenida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel barraProgress;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel progress;
     // End of variables declaration//GEN-END:variables
 }

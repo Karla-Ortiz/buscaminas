@@ -28,15 +28,4 @@ public class Reproductor {
         player.open(new File(ruta));
     }
 
-    public void Pausa() throws Exception {
-        player.pause();
-    }
-
-    public void Continuar() throws Exception {
-        player.resume();
-    }
-
-    public void Stop() throws Exception {
-        player.stop();
-    }
 }

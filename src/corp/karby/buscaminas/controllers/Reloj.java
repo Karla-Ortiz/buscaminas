@@ -7,15 +7,15 @@ package corp.karby.buscaminas.controllers;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.JLabel;
 
 /**
  *
  * @author Gabriela}
  */
 public class Reloj {
-    public Reloj(JLabel etiqueta){
+
+    public static String hora() {
         DateTimeFormatter f = DateTimeFormatter.ofPattern("HH:mm:ss");
-        String horaActual = f.format(LocalDateTime.now());
+        return f.format(LocalDateTime.now());
     }
 }
